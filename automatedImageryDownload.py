@@ -1,4 +1,6 @@
 #The script will automate data downloading
+#David Haynes
+
 import urllib
 
 #Input Parameters here
