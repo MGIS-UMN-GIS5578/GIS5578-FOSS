@@ -1,4 +1,9 @@
-###https://www.analyticsvidhya.com/blog/2015/10/beginner-guide-web-scraping-beautiful-soup-python/
+# This is a script for reading data from the web. (WEB Scraping)
+# Here is a good tutorial you can use
+# https://www.analyticsvidhya.com/blog/2015/10/beginner-guide-web-scraping-beautiful-soup-python/
+# Beautiful Soup is a very good library
+
+
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd

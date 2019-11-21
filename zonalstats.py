@@ -1,7 +1,7 @@
 from osgeo import gdal, ogr
 from collections import Counter
 import numpy as np
-import timeit
+import timeit, os
 
 
 def world2Pixel(geoMatrix, x, y):
@@ -70,7 +70,7 @@ def RasterizePolygon(inRasterPath, outRasterPath, vectorPath):
     band.SetNoDataValue(-999)
 
     #Rasterize
-    gdal.RasterizeLayer(theRast, [1], theLayer, options=["ATTRIBUTE=ID"])
+    gdal.RasterizeLayer(theRast, [1], theLayer, options=["ATTRIBUTE=id"])
     
     del theRast, inRaster
 
@@ -145,10 +145,13 @@ def CalculateZonalStats(clippedRasterPath, maskedRasterPath):
 
 ####################### Code Starts #############################
 
-rasterPath = '/home/david/data/GIS5578/glc2000.tif'
-rasterClipPath= '/home/david/data/GIS5578/glc2000_us.tif'
-vectorPath = '/home/david/data/GIS5578/us_states.shp'
-rasterizedVectorPath = '/home/david/data/GIS5578/us_states_glc2000.tif'
+workingDir = r"c:\git\GIS5578-FOSS\datasets"
+rasterPath = os.path.join(workingDir, "glc2000.tif")
+vectorPath = os.path.join(workingDir, "states.shp")
+
+outDir = r"c:\work"
+rasterClipPath= os.path.join(outDir,"glc2000_us.tif")
+rasterizedVectorPath = os.path.join(outDir,"us_states_glc2000.tif")
 
 start = timeit.default_timer()
 print("Starting....")
