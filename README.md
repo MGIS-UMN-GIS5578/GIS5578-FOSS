@@ -7,6 +7,10 @@ This should work 90% of the time
 ```
 conda create --name geoanalyst python=3.6, jupyter notebook
 ```
+1. Add Conda Forge Channel
+```
+conda config --add channels conda-forge
+```
 1. Activates your conda environment
 ```
 source activate geoanalyst
