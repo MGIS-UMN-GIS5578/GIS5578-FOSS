@@ -12,23 +12,23 @@ PySAL will be used to perform the spatial measure (LISA)
 
 import pysal, geopandas
 
-shpFilePath = r"E:\git\GIS5578\GIS5578-FOSS\datasets\mn_tracts_2010.shp"
-countiesDF = geopandas.read_file(shpFilePath)
+shpFilePath = r"C:\git\GIS5578-FOSS\datasets\mn_tracts_2010.shp"
+tractsDF = geopandas.read_file(shpFilePath)
 
 
         #Generate once per loop
-weights = pysal.weights.Queen.from_dataframe(countiesDF)
-countiesDF.keys()
+weights = pysal.weights.Queen.from_dataframe(tractsDF)
+tractsDF.keys()
 
-nationalDeprivationScores = countiesDF['national_a']
-percentMinority = countiesDF['percent_mi']
+nationalDeprivationScores = tractsDF['national_a']
+percentMinority = tractsDF['percent_mi']
                 
 bivariateLisa = pysal.pysal.Moran_Local_BV(nationalDeprivationScores, percentMinority, weights, permutations=999)
 for recordName, recordValues in zip(['lisa','p_value', 'quadrant'], [bivariateLisa.Is, bivariateLisa.p_sim, bivariateLisa.q] ):
-    countiesDF.insert(len(countiesDF.keys()), recordName, recordValues)
+    tractsDF.insert(len(tractsDF.keys()), recordName, recordValues)
             
 
-del countiesDF['geometry']
+del tractsDF['geometry']
 
-countiesDF.to_csv(r"E:\work\bivariate_list.csv", sep=',')
+tractsDF.to_csv(r"E:\work\bivariate_list.csv", sep=',')
 print("Finished")

@@ -24,4 +24,4 @@ for c, tile in enumerate(tiles):
     print(tile,fileName)
     urllib.request.urlretrieve(tile, fileName)
     #Remove this after it works
-    break
+    if c == 10: break

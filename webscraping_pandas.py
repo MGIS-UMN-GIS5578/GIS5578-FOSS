@@ -24,7 +24,7 @@ dataTable = parsedWebPage.find('table')
 #Dictionary that will hold all of the information
 dataDictionary = {}
 for rec, row in enumerate(dataTable):
-    print row
+    print(row)
     try:
         
         #Split it into parts row.findAll('td')[0].text.split(',')
